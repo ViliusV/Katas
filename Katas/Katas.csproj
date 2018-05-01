@@ -55,6 +55,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tasks\DuplicateEncoderUtility.cs" />
+    <Compile Include="Tasks\PronicNumber.cs" />
     <Compile Include="Tasks\RomanDecode.cs" />
     <Compile Include="Tasks\SingletonAdamEve.cs" />
   </ItemGroup>
