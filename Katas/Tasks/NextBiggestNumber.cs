@@ -18,6 +18,7 @@ namespace Katas.Tasks
 
 			var digits = GetDigits(n);
 			var multiplier = 1;
+			var number = 0;
 			for (var id = digits.Count - 1; id >= 0; id--)
 			{
 				number += digits[id] * multiplier;
