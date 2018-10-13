@@ -1,22 +1,46 @@
 ﻿using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace Katas.Tasks
 {
-	//Euler 119# problem
+	//Euler 119# problem https://projecteuler.net/problem=119
 	public class PowerSumDig
 	{
 		public static long PowerSumDigTerm(int n)
 		{
-			var matchesCount = 0;
-			for (long number = 81; number < long.MaxValue; number += 1)
-			{
-				if (IsNumberProductOfItsDigitsSum(number) && ++matchesCount == n)
-				{
-					return number;
-				}
-			}
+			const int maxDigitsSum = 170; //That's the biggest possible sum of digits of a C# long-type number (8,999,999,999,999,999,999)	
+			var foundNumbers = new List<long>();
 
-			return 0;
+			for (var digitsSum = 2; digitsSum <= maxDigitsSum; digitsSum++)
+			{
+				long product = digitsSum;
+				do
+				{
+					long previousProduct = product;
+					product *= digitsSum;
+					if (product / digitsSum != previousProduct)
+					{
+						break;  //Overflow has happened
+					}
+
+					if (!foundNumbers.Contains(product) && CalculateDigitsSum(product) == digitsSum)
+					{
+						foundNumbers.Add(product);
+					}
+
+				}
+				while (product < long.MaxValue);
+			}
+			foundNumbers.Sort(); //Numbers are added randomly, so it's necessary to sort them
+
+			if (n <= foundNumbers.Count)
+			{
+				return foundNumbers[n - 1];
+			}
+			else
+			{
+				return 0;
+			}
 		}
 
 		public static int CalculateDigitsSum(long number)
@@ -26,45 +50,11 @@ namespace Katas.Tasks
 
 			while (x > 0)
 			{
-				sum += (int)x % 10;
+				sum += (int)(x % 10);
 				x = x / 10;
 			}
 
 			return sum;
-		}
-
-		public static bool IsNumberProductOfItsDigitsSum(long number)
-		{
-			if (number < 0)
-			{
-				return false;
-			}
-
-			if (number == 0 || number == 1)
-			{
-				return true;
-			}
-
-			var digitsSum = CalculateDigitsSum(number);
-			if (digitsSum == 1)
-			{
-				return false;
-			}
-
-			long product = digitsSum;
-			do
-			{
-				var previousProduct = product;
-				product *= digitsSum;
-				if (product / digitsSum != previousProduct)
-				{
-					return false; //Overflow has happened
-				}
-
-			}
-			while (product < number);
-
-			return product == number;
 		}
 	}
 
@@ -90,19 +80,6 @@ namespace Katas.Tasks
 			Assert.AreEqual(PowerSumDig.CalculateDigitsSum(100), 1);
 			Assert.AreEqual(PowerSumDig.CalculateDigitsSum(237), 12);
 			Assert.AreEqual(PowerSumDig.CalculateDigitsSum(456712), 25);
-		}
-
-		[Test]
-		public static void IsNumberProductOfItsDigitsSum_Test()
-		{
-			Assert.AreEqual(PowerSumDig.IsNumberProductOfItsDigitsSum(0), true);
-			Assert.AreEqual(PowerSumDig.IsNumberProductOfItsDigitsSum(1), true);
-			Assert.AreEqual(PowerSumDig.IsNumberProductOfItsDigitsSum(2), false);
-			Assert.AreEqual(PowerSumDig.IsNumberProductOfItsDigitsSum(12), false);
-			Assert.AreEqual(PowerSumDig.IsNumberProductOfItsDigitsSum(81), true);
-			Assert.AreEqual(PowerSumDig.IsNumberProductOfItsDigitsSum(100), false);
-			Assert.AreEqual(PowerSumDig.IsNumberProductOfItsDigitsSum(512), true);
-			Assert.AreEqual(PowerSumDig.IsNumberProductOfItsDigitsSum(513), false);
 		}
 	}
 }
