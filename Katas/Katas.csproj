@@ -58,6 +58,7 @@
     <Compile Include="Tasks\DuplicateEncoderUtility.cs" />
     <Compile Include="Tasks\EventDelegate.cs" />
     <Compile Include="Tasks\NextBiggestNumber.cs" />
+    <Compile Include="Tasks\PowerSumDig.cs" />
     <Compile Include="Tasks\PronicNumber.cs" />
     <Compile Include="Tasks\RomanDecode.cs" />
     <Compile Include="Tasks\SingletonAdamEve.cs" />
