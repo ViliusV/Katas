@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Katas.Tasks
 {
-	public class Kata
+	public partial class Kata
 	{
 		public static bool IsPronic(int n)
 		{
