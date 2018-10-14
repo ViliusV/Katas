@@ -64,6 +64,7 @@
     <Compile Include="Tasks\PronicNumber.cs" />
     <Compile Include="Tasks\RomanDecode.cs" />
     <Compile Include="Tasks\SingletonAdamEve.cs" />
+    <Compile Include="Tasks\TriangleNumbers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
