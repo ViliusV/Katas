@@ -57,6 +57,7 @@
     <Compile Include="Tasks\DirectionsReduction.cs" />
     <Compile Include="Tasks\DuplicateEncoderUtility.cs" />
     <Compile Include="Tasks\EventDelegate.cs" />
+    <Compile Include="Tasks\HumanReadableTime.cs" />
     <Compile Include="Tasks\NextBiggestNumber.cs" />
     <Compile Include="Tasks\NumberFactors.cs" />
     <Compile Include="Tasks\OccurencesMinimizer.cs" />
