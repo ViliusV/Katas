@@ -1,4 +1,5 @@
 ﻿using Katas.Tasks;
+using System;
 
 namespace Katas
 {
@@ -6,11 +7,9 @@ namespace Katas
 	{
 		public static void Main(string[] args)
 		{
-			for (var id = 1; id < 40; id++)
-			{
-				long result = PowerSumDig.PowerSumDigTerm(id);
-				System.Console.WriteLine($"{id} {result}");
-			}
+			var numbers = new int[] { 19, 5, 42, 2, 77 };
+			var result = SumOfTwoSmallestNumbers.sumTwoSmallestNumbers(numbers);
+			Console.WriteLine(result);
 		}
 	}
 }
